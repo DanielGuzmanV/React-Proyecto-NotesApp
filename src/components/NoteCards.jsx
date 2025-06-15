@@ -1,7 +1,9 @@
+import './NoteCard.css'
+
 function NoteCards(props) {
   return (
 
-    <article>
+    <article className="note-card">
       <input 
         type="text" 
         className="card-title" 

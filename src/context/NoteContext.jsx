@@ -29,8 +29,21 @@ function NoteProviderWrapper(props) {
 
   const [notes, setNotes] = useState(noteList);
 
+  // Actualizamos una nota:
+  const updateNote = (valueNote) => {
+    const newNotes= notes.map(note => {
+      if(note.id !== valueNote.id) return note;
+      return valueNote
+    })
+    setNotes(newNotes);
+  }
+
+  const addNewNotes = (addNote) => {
+    setNotes([addNote, ...notes]);
+  }
+
   return (
-    <NoteContext.Provider value={{notes, setNotes}}>
+    <NoteContext.Provider value={{notes, setNotes, updateNote}}>
       {props.children}
     </NoteContext.Provider>
   )

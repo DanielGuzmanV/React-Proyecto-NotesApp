@@ -1,10 +1,13 @@
 import './App.css'
+import HeaderComponent from './components/HeaderComponent'
+import MyRoutes from './routes/Routes'
 
 function App() {
   return (
-    <>
-      <h2>My Notes App</h2>
-    </>
+    <div>
+      <HeaderComponent/>
+      <MyRoutes/>
+    </div>
   )
 }
 

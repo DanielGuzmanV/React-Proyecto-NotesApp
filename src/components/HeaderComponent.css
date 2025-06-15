@@ -2,33 +2,33 @@
   background-color: #000022;
   color: white;
   text-align: center;
-  padding: 20px 10px 1px 10px;
+  padding: 20px 10px 5px 10px;
   border-radius: 10px;
 }
 
 .header-title {
   margin: 0;
+  padding: 10px;
 }
 
 .nav-list {
   display: flex;
   justify-content: space-around;
   list-style-type: none;
-  padding: 0;
-
-  .link {
-    color: white;
-    text-decoration: none;
-  }
+  padding: 5px;
   
 }
 
-.list-content {
+.link {
+  display: block;
   background-color: #3d3d5e;
   padding: 10px 30px 10px;
   border-radius: 15px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.2s;
 }
 
-.list-content:hover{
+.link:hover{
   background-color: #6b6ba6;
 }

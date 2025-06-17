@@ -4,7 +4,7 @@ const NoteContext = createContext();
 
 function NoteProviderWrapper(props) {
 // Lista de notas
-  const noteList = [
+  const objListNotes = [
     {
       id: 1,
       title: 'Aprender React',
@@ -27,23 +27,26 @@ function NoteProviderWrapper(props) {
     },
   ]
 
-  const [notes, setNotes] = useState(noteList);
+  const [noteList, setNotes] = useState(objListNotes);
 
-  // Actualizamos una nota:
+  // Actualizamos el dato de una nota:
   const updateNote = (valueNote) => {
-    const newNotes= notes.map(note => {
-      if(note.id !== valueNote.id) return note;
+    const newNotes= noteList.map(objectNote => {
+      if(objectNote.id !== valueNote.id) return objectNote;
       return valueNote
     })
     setNotes(newNotes);
   }
-
+  //===========================================
+  
+  // Agregar nuevas notas:
   const addNewNotes = (addNote) => {
-    setNotes([addNote, ...notes]);
+    setNotes([addNote, ...noteList]);
   }
+  //===========================================
 
   return (
-    <NoteContext.Provider value={{notes, setNotes, updateNote}}>
+    <NoteContext.Provider value={{noteList, setNotes, addNewNotes, updateNote}}>
       {props.children}
     </NoteContext.Provider>
   )

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { NoteContext } from "../context/notecontext"
+import './CreateNote.css'
 
 function CreateNote() {
   const {addNewNotes} = useContext(NoteContext);

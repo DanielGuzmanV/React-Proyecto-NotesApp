@@ -2,14 +2,15 @@ import { useContext } from "react"
 import NoteCards from "../components/NoteCards";
 import { NoteContext } from "../context/notecontext";
 import './NotePage.css'
+import CreateNote from "../components/CreateNote";
 
 function NotePage() {
-  const {notes} = useContext(NoteContext);
+  const {noteList} = useContext(NoteContext);
 
-  const valueNoteCards = notes.map(valueNotes => {
+  const valueNoteCards = noteList.map(valueNotes => {
     return(
       <li key={valueNotes.id}>
-        <NoteCards note={valueNotes}/>
+        <NoteCards objNotes={valueNotes}/>
       </li>
     )
   })
@@ -18,7 +19,11 @@ function NotePage() {
     <div>
       <section id="notes-page">
         <h2 className=" title">Lista de notas</h2>
+
         <ul className="note-list">
+
+          <li><CreateNote/></li>
+
           {valueNoteCards}
         </ul>
       </section>

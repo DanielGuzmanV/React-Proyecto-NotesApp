@@ -5,6 +5,8 @@ const API_URL = 'https://ca091376fa0129e65743.free.beeceptor.com/api/notes/';
 
 function NoteProviderWrapper(props) {
   const [noteList, setNotes] = useState([]);
+  const [hasError, setHasError] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
   // Realizamos la peticion a la API
   const getNotes = async () => {
@@ -12,9 +14,12 @@ function NoteProviderWrapper(props) {
       const response = await fetch(API_URL);
       const date = await response.json();
       setNotes(date.reverse());
-    
+      setHasError(false);
+      setHasLoaded(true);
+
     } catch (error) {
       console.log(error);
+      setHasError(true);
     }
   }
   // =========================================
@@ -45,7 +50,7 @@ function NoteProviderWrapper(props) {
   //===========================================
 
   return (
-    <NoteContext.Provider value={{noteList, getNotes, setNotes, addNewNotes, updateNote}}>
+    <NoteContext.Provider value={{noteList, hasError, hasLoaded, getNotes, setNotes, addNewNotes, updateNote}}>
       {props.children}
     </NoteContext.Provider>
   )

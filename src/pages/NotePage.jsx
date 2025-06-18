@@ -5,7 +5,7 @@ import './NotePage.css'
 import CreateNote from "../components/CreateNote";
 
 function NotePage() {
-  const {noteList, getNotes} = useContext(NoteContext);
+  const {noteList, getNotes, hasError, hasLoaded} = useContext(NoteContext);
 
   useEffect(() => {
     getNotes()
@@ -28,7 +28,12 @@ function NotePage() {
 
           <li><CreateNote/></li>
 
-          {valueNoteCards}
+          { hasError 
+            ? (<h2>Ups... ocurrio un error </h2>)
+            : !hasLoaded 
+            ? (<h2>Cargando datos...</h2>)
+            : (valueNoteCards)
+          }
         </ul>
       </section>
     </div>

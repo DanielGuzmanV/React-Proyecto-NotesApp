@@ -1,11 +1,15 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import NoteCards from "../components/NoteCards";
-import { NoteContext } from "../context/notecontext";
+import { NoteContext } from "../context/NoteContext";
 import './NotePage.css'
 import CreateNote from "../components/CreateNote";
 
 function NotePage() {
-  const {noteList} = useContext(NoteContext);
+  const {noteList, getNotes} = useContext(NoteContext);
+
+  useEffect(() => {
+    getNotes()
+  }, [])
 
   const valueNoteCards = noteList.map(valueNotes => {
     return(
